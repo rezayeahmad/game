@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amazon Style Shop</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#eaeded;
+}
+
+/* Navbar */
+
+.navbar{
+    background:#131921;
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 30px;
+    flex-wrap:wrap;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    color:#ff9900;
+}
+
+.search-box{
+    flex:1;
+    margin:10px 20px;
+    display:flex;
+}
+
+.search-box input{
+    width:100%;
+    padding:10px;
+    border:none;
+    outline:none;
+    border-radius:5px 0 0 5px;
+}
+
+.search-box button{
+    padding:10px 20px;
+    border:none;
+    background:#ff9900;
+    cursor:pointer;
+    border-radius:0 5px 5px 0;
+}
+
+.cart{
+    background:#ff9900;
+    color:black;
+    padding:10px 15px;
+    border-radius:5px;
+    font-weight:bold;
+}
+
+/* Hero */
+
+.hero{
+    background:url('https://images.unsplash.com/photo-1522199755839-a2bacb67c546?q=80&w=1200') center/cover;
+    height:300px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    text-align:center;
+}
+
+.hero h1{
+    background:rgba(0,0,0,0.6);
+    padding:20px;
+    border-radius:10px;
+    font-size:40px;
+}
+
+/* Products */
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    padding:30px;
+}
+
+.card{
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+    transition:0.3s;
+    box-shadow:0 2px 5px rgba(0,0,0,0.2);
+}
+.categories{
+    text-align:center;
+    padding:20px;
+}
+
+.categories button{
+    margin:10px;
+    padding:12px 20px;
+    background:#131921;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.categories button:hover{
+    background:#ff9900;
+    color:black;
+}
+
+.card:hover{
+    transform:scale(1.03);
+}
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:15px;
+    text-align:center;
+}
+
+.card h3{
+    margin-bottom:10px;
+}
+
+.price{
+    color:green;
+    font-size:22px;
+    margin-bottom:10px;
+    font-weight:bold;
+}
+
+button{
+    background:#ff9900;
+    border:none;
+    padding:10px 15px;
+    border-radius:5px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+button:hover{
+    background:#e68a00;
+}
+
+/* Footer */
+
+.footer{
+    background:#131921;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+
+<div class="navbar">
+
+    <div class="logo">Mini Amazon</div>
+
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search product...">
+        <button onclick="searchProduct()">Search</button>
+    </div>
+
+    <div class="cart">
+        Cart: <span id="cart-count">0</span>
+    </div>
+
+</div>
+
+<!-- Hero -->
+
+<div class="hero">
+    <h1>Welcome To Mini Amazon Shop</h1>
+</div>
+<!-- CATEGORY BUTTONS -->
+
+<div class="categories">
+
+<button onclick="showCategory('all')">All</button>
+<button onclick="showCategory('mobile')">Mobiles</button>
+<button onclick="showCategory('laptop')">Laptops</button>
+<button onclick="showCategory('tv')">Television</button>
+<button onclick="showCategory('watch')">Watches</button>
+
+</div>
+
+
+
+<!-- PRODUCTS -->
+
+<div class="products">
+
+<!-- APPLE -->
+<div class="card product mobile">
+<img src="https://images.unsplash.com/photo-1510557880182-3f8cbf3f4d6d?q=80&w=800">
+<div class="card-content">
+<h3>iPhone 15 Pro</h3>
+<p class="price">$1200</p>
+<button onclick="addToCart()">Add To Cart</button>
+</div>
+</div>
+
+<!-- SAMSUNG -->
+<div class="card product mobile">
+<img src="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?q=80&w=800">
+<div class="card-content">
+<h3>Samsung S24</h3>
+<p class="price">$950</p>
+<button onclick="addToCart()">Add To Cart</button>
+</div>
+</div>
+
+<!-- NOKIA -->
+<div class="card product mobile">
+<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=800">
+<div class="card-content">
+<h3>Nokia</h3>
+<p class="price">$200</p>
+<button onclick="addToCart()">Add To Cart</button>
+</div>
+</div>
+
+<!-- HP LAPTOP -->
+<div class="card product laptop">
+<img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=800">
+<div class="card-content">
+<h3>HP Laptop</h3>
+<p class="price">$700</p>
+<button onclick="addToCart()">Add To Cart</button>
+</div>
+</div>
+
+<!-- DELL -->
+<div class="card product laptop">
+<img src="https://images.unsplash.com/photo-1517336714739-489689fd1ca8?q=80&w=800">
+<div class="card-content">
+<h3>Dell Laptop</h3>
+<p class="price">$850</p>
+<button onclick="addToCart()">Add To Cart</button>
+</div>
+</div>
+
+<!-- MACBOOK -->
+<div class="card product laptop">
+<img src="https://images.unsplash.com/photo-1517336714739-489689fd1ca8?q=80&w=800">
+<div class="card-content">
+<h3>MacBook</h3>
+<p class="price">$1500</p>
+<button onclick="addToCart()">Add To Cart</button>
+</div>
+</div>
+
+<!-- TV -->
+<div class="card product tv">
+<img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?q=80&w=800">
+<div class="card-content">
+<h3>Samsung TV</h3>
+<p class="price">$900</p>
+<button onclick="addToCart()">Add To Cart</button>
+</div>
+</div>
+
+<!-- WATCH -->
+<div class="card product watch">
+<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=800">
+<div class="card-content">
+<h3>Smart Watch</h3>
+<p class="price">$180</p>
+<button onclick="addToCart()">Add To Cart</button>
+</div>
+</div>
+
+</div>
+
+<!-- Products -->
+
+<div class="products" id="product-list">
+
+    
+<!-- 1 -->
+<div class="card product">
+<img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=800">
+<div class="card-content">
+<h3>Laptop</h3>
+<p class="price">$500</p>
+<button onclick="addToCart()">Add To Cart</button>
+</div>
+</div>
+
+<!-- 2 -->
+<div class="card product">
+<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=800">
+<div class="card-content">
+<h3>Mobile</h3>
+<p class="price">$300</p>
+<button onclick="addToCart()">Add To Cart</button>
+</div>
+</div>
+
+<!-- 3 -->
+<div class="card product">
+<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800">
+<div class="card-content">
+<h3>Headphone</h3>
+<p class="price">$80</p>
+<button onclick="addToCart()">Add To Cart</button>
+</div>
+</div>
+
+<!-- 4 -->
+<div class="card product">
+<img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800">
+<div class="card-content">
+<h3>Camera</h3>
+<p class="price">$650</p>
+<button onclick="addToCart()">Add To Cart</button>
+</div>
+</div>
+
+<!-- 5 -->
+<div class="card product">
+<img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?q=80&w=800">
+<div class="card-content">
+<h3>Television</h3>
+<p class="price">$900</p>
+<button onclick="addToCart()">Add To Cart</button>
+</div>
+</div>
+
+<!-- 6 -->
+<div class="card product">
+<img src="https://images.unsplash.com/photo-1580894908361-967195033215?q=80&w=800">
+<div class="card-content">
+<h3>Gaming PC</h3>
+<p class="price">$1200</p>
+<button onclick="addToCart()">Add To Cart</button>
+</div>
+</div>
+
+<!-- 7 -->
+<div class="card product">
+<img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?q=80&w=800">
+<div class="card-content">
+<h3>Smart Watch</h3>
+<p class="price">$150</p>
+<button onclick="addToCart()">Add To Cart</button>
+</div>
+</div>
+
+<!-- 8 -->
+<div class="card product">
+<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=800">
+<div class="card-content">
+<h3>Digital Watch</h3>
+<p class="price">$60</p>
+<button onclick="addToCart()">Add To Cart</button>
+</div>
+</div>
+
+<!-- 9 -->
+<div class="card product">
+<img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?q=80&w=800">
+<div class="card-content">
+<h3>Speaker</h3>
+<p class="price">$110</p>
+<button onclick="addToCart()">Add To Cart</button>
+</div>
+</div>
+
+<!-- 10 -->
+<div class="card product">
+<img src="https://images.unsplash.com/photo-1517336714739-489689fd1ca8?q=80&w=800">
+<div class="card-content">
+<h3>MacBook</h3>
+<p class="price">$1400</p>
+<button onclick="addToCart()">Add To Cart</button>
+</div>
+</div>
+
+<!-- 11 -->
+<div class="card product">
+<img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?q=80&w=800">
+<div class="card-content">
+<h3>Keyboard</h3>
+<p class="price">$40</p>
+<button onclick="addToCart()">Add To Cart</button>
+</div>
+</div>
+
+<!-- 12 -->
+<div class="card product">
+<img src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?q=80&w=800">
+<div class="card-content">
+<h3>Mouse</h3>
+<p class="price">$25</p>
+<button onclick="addToCart()">Add To Cart</button>
+</div>
+</div>
+
+<!-- 13 -->
+<div class="card product">
+<img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?q=80&w=800">
+<div class="card-content">
+<h3>Printer</h3>
+<p class="price">$220</p>
+<button onclick="addToCart()">Add To Cart</button>
+</div>
+</div>
+
+<!-- 14 -->
+<div class="card product">
+<img src="https://images.unsplash.com/photo-1583225157630-582d2d4c9fbc?q=80&w=800">
+<div class="card-content">
+<h3>Tablet</h3>
+<p class="price">$280</p>
+<button onclick="addToCart()">Add To Cart</button>
+</div>
+</div>
+
+<!-- 15 -->
+<div class="card product">
+<img src="https://images.unsplash.com/photo-1510557880182-3f8cbf3f4d6d?q=80&w=800">
+<div class="card-content">
+<h3>iPhone</h3>
+<p class="price">$999</p>
+<button onclick="addToCart()">Add To Cart</button>
+</div>
+</div>
+
+<!-- 16 -->
+<div class="card product">
+<img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?q=80&w=800">
+<div class="card-content">
+<h3>Drone</h3>
+<p class="price">$700</p>
+<button onclick="addToCart()">Add To Cart</button>
+</div>
+</div>
+
+<!-- 17 -->
+<div class="card product">
+<img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800">
+<div class="card-content">
+<h3>Monitor</h3>
+<p class="price">$320</p>
+<button onclick="addToCart()">Add To Cart</button>
+</div>
+</div>
+
+<!-- 18 -->
+<div class="card product">
+<img src="https://images.unsplash.com/photo-1580910051074-3eb694886505?q=80&w=800">
+<div class="card-content">
+<h3>Router</h3>
+<p class="price">$75</p>
+<button onclick="addToCart()">Add To Cart</button>
+</div>
+</div>
+
+<!-- 19 -->
+<div class="card product">
+<img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=800">
+<div class="card-content">
+<h3>Refrigerator</h3>
+<p class="price">$1300</p>
+<button onclick="addToCart()">Add To Cart</button>
+</div>
+</div>
+
+<!-- 20 -->
+<div class="card product">
+<img src="https://images.unsplash.com/photo-1570222094114-d054a817e56b?q=80&w=800">
+<div class="card-content">
+<h3>Washing Machine</h3>
+<p class="price">$850</p>
+<button onclick="addToCart()">Add To Cart</button>
+</div>
+</div>
+
+</div>
+    </div>
+
+    <!-- Camera -->
+    <div class="card product">
+        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800">
+        <div class="card-content">
+            <h3>Camera</h3>
+            <p class="price">$650</p>
+            <button onclick="addToCart()">Add To Cart</button>
+        </div>
+    </div>
+
+</div>
+
+<!-- Footer -->
+
+<div class="footer">
+    <p> 2026 Mini website with HTML,CSS and JavaScript </p>
+</div>
+
+<script>
+
+let cart = 0;
+
+function addToCart(){
+    cart++;
+    document.getElementById("cart-count").innerText = cart;
+}
+function showCategory(category){
+
+    let products = document.querySelectorAll(".product");
+
+    products.forEach(product => {
+
+        if(category === "all"){
+            product.style.display = "block";
+        }
+
+        else if(product.classList.contains(category)){
+            product.style.display = "block";
+        }
+
+        else{
+            product.style.display = "none";
+        }
+
+    });
+
+}
+
+/* Search */
+
+function searchProduct(){
+
+    let input = document.getElementById("searchInput").value.toLowerCase();
+
+    let products = document.querySelectorAll(".product");
+
+    products.forEach(product => {
+
+        let name = product.innerText.toLowerCase();
+
+        if(name.includes(input)){
+            product.style.display = "block";
+        }
+        else{
+            product.style.display = "none";
+        }
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>
